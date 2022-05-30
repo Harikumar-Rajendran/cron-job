@@ -43,7 +43,7 @@ const options = {
           })
   }
 
-cron.schedule('0 8,17 * * *', () => {
+cron.schedule('1 8,17 * * *', () => {
   console.log('running a task every minute');
   axios.request(options).then(function (response) {
 	console.log(JSON.stringify(response.data));
