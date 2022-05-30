@@ -45,18 +45,21 @@ const options = {
           })
   }
 
-  cron.schedule('5 8,21 * * *', () => {
-    console.log('running a task every minute');
+  const fetchStock = () =>{
     axios.request(options).then(function (response) {
-      console.log(JSON.stringify(response.data));
-      postStock(JSON.stringify(response.data))
-      }).catch(function (error) {
-          console.error(error);
-      });
+        console.log(JSON.stringify(response.data));
+        postStock(JSON.stringify(response.data))
+        }).catch(function (error) {
+            console.error(error);
+        });
+  }
+  cron.schedule('1 8,17 * * *', () => {
+    console.log('running a task every minute');
+    fetchStock()
   });
 
 app.get('/', function (req, res) {
-    
+    fetchStock()
     res.send('Hello World');
 })
 
