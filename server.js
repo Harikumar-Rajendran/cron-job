@@ -1,3 +1,5 @@
+var express = require('express');
+var app = express();
 var cron = require('node-cron');
 const axios = require("axios");
 var faunadb = require('faunadb'), q = faunadb.query
@@ -43,33 +45,27 @@ const options = {
           })
   }
 
-cron.schedule('1 8,17 * * *', () => {
-  console.log('running a task every minute');
-  axios.request(options).then(function (response) {
-	console.log(JSON.stringify(response.data));
-    postStock(JSON.stringify(response.data))
-    }).catch(function (error) {
-        console.error(error);
-    });
-});
+  cron.schedule('5 8,21 * * *', () => {
+    console.log('running a task every minute');
+    axios.request(options).then(function (response) {
+      console.log(JSON.stringify(response.data));
+      postStock(JSON.stringify(response.data))
+      }).catch(function (error) {
+          console.error(error);
+      });
+  });
 
+app.get('/', function (req, res) {
+    
+    res.send('Hello World');
+})
 
-
-
-
-
-
-// var express = require('express');
-// var app = express();
-
-// app.get('/', function (req, res) {
-//    res.send('Hello World');
-// })
-
-// var server = app.listen(8081, function () {
-//    var host = server.address().address
-//    var port = server.address().port
+var server = app.listen(process.env.PORT || 8081, function () {
+   var host = server.address().address
+   var port = server.address().port
    
-//    console.log("Example app listening at http://%s:%s", host, port)
-// })
+   
+
+   console.log("Example app listening at http://%s:%s", host, port)
+})
 
