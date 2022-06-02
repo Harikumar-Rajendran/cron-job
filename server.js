@@ -53,10 +53,12 @@ const options = {
             console.error(error);
         });
   }
-  cron.schedule('1 8,17 * * *', () => {
-    console.log('running a task every minute');
-    fetchStock()
-  });
+//   cron.schedule('1 8,17 * * *', () => {
+//     console.log('running a task every minute');
+//     fetchStock()
+//   });
+
+  setInterval(fetchStock, 60000);
 
 app.get('/', function (req, res) {
     fetchStock()
