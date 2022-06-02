@@ -58,7 +58,7 @@ const options = {
 //     fetchStock()
 //   });
 
-  setInterval(fetchStock, 60000);
+//   setInterval(fetchStock, 60000);
 
 app.get('/', function (req, res) {
     fetchStock()
