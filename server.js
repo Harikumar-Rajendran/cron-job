@@ -1,6 +1,6 @@
 var express = require('express');
 var app = express();
-var cron = require('node-cron');
+// var cron = require('node-cron');
 const axios = require("axios");
 var faunadb = require('faunadb'), q = faunadb.query
 
