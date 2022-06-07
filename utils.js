@@ -7,7 +7,7 @@ function ParseRoute(routeList) {
 }
 
 function FormatRoute(route) {
-
+console.log(route)
     const jsonHdrStr = JSON.parse(JSON.stringify(route.Headers))
     const properties = jsonHdrStr.split(';');
     const headers = {};

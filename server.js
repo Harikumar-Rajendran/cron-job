@@ -27,7 +27,7 @@ const getRoute = () => {
             })
             return client.query(getAllDataQuery).then((ret) => {
                 const rt = util.ParseRoute(ret)
-                fetchStock(util.FormatRoute(rt[0]))
+                fetchStock(util.FormatRoute(rt[rt.length-1]))
             })
         }).catch((error) => {
             console.log("error", error)
